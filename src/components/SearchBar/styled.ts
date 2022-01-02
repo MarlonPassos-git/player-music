@@ -35,6 +35,7 @@ interface SearchInputProps {
 
 export const SearchInput = styled.input<SearchInputProps>`
     display: ${props => props.isOpen ? 'block' : 'none'};
+    max-width: ${Rem(500)};
 
 `
 
