@@ -8,6 +8,7 @@ export const Container = styled.header`
     align-items: center;
     height: ${Rem(92)};
     padding: 0 var(--spacing-padding);
+    border-bottom: 1px solid var(--black);
 
 
 `
