@@ -1,31 +1,37 @@
-import { useEffect, useState } from "react"
+import { memo, ReactNode, useEffect, useState } from "react"
 import api from "../../services/user"
 import { CategorySection } from "../CategorySection/CategorySection"
 import { Container } from "./styled"
+import { useSearchResult } from "../../context/SearchResult"
 
 interface popularSoundsProps { 
     category: string,
     data: []
 }
 
-export function Main() { 
+function MainComponent() {
 
     const [popularSounds, setPopularSounds] = useState<Array<popularSoundsProps>>([])
+
+    //@ts-ignore
+    const {searchResult, setSearchResult} = useSearchResult()
     
     useEffect(() => {   
         api.get('popularSounds').then(response => {
             
-            console.log(response.data)
+            
             setPopularSounds(response.data)
-
+            
         })
     }, [])
 
-
-    return (
-        <Container>
-            {
-                popularSounds.map((category, index) => { 
+    let whatShow: ReactNode 
+    
+    if (searchResult.hasOwnProperty('data')) {
+        whatShow = <h1>asas</h1>
+    }
+    else { 
+        whatShow = popularSounds.map((category, index) => { 
                     return (
                         <CategorySection
                             key={index}
@@ -34,7 +40,16 @@ export function Main() {
                         />
                     )
                 })
-            }
+    }
+
+
+
+
+    return (
+        <Container>
+            { whatShow }
         </Container>
     )
 }
+
+export const Main = memo(MainComponent)

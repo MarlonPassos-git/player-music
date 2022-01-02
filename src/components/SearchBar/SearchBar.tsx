@@ -2,23 +2,47 @@ import  { useState, ChangeEvent } from 'react'
 import { ImSearch } from 'react-icons/im'
 import { Container, SearchButton, SearchClose, SearchInput } from './styled'
 import { VscChromeClose, VscSearch } from 'react-icons/vsc'
+import api from '../../services/user'
+import { SearchResultContext, useSearchResult } from '../../context/SearchResult';
+
+
+interface SearchResultProps { 
+    searchResult: any,
+    setSearchResult: Function
+}
+
 
 export default function SearchBar() {
 
     const [isOpen, setIsOpen] = useState(false)
     const [value, setValue] = useState('')
 
-    function handleSearchButton() { 
+    //@ts-ignore
+    const {searchResult, setSearchResult} = useSearchResult()
 
-        if (!isOpen) { 
+    
+
+    function handleSearchButton(event:any) { 
+
+        if (!isOpen || value === '') { 
             setIsOpen(true)
             return
         }
+
+        event.preventDefault()
+
+        api.get(`searchImput/${value}`).then(response => {
+        
+            
+            setSearchResult(response.data)
+        })
+
+        
     }
 
     function handleSearchInput(event: ChangeEvent<HTMLInputElement>) { 
-        const inputValue = event.target.value 
 
+        const inputValue = event.target.value 
         setValue(inputValue)
     }
 
@@ -28,13 +52,14 @@ export default function SearchBar() {
             setIsOpen(false)
             return
         }
-
         setValue('')
-
+        setSearchResult({})
     }
 
     return (
-        <Container>
+        <Container
+            onSubmit={handleSearchButton}
+        >
             <SearchButton
                 type="button"
                 onClick={handleSearchButton}
