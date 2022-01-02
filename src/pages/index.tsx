@@ -4,11 +4,13 @@ import Image from 'next/image'
 import Header from '../components/Header/Header'
 import "the-new-css-reset/css/reset.css"
 import { GlobalStyle } from '../styles/GlobalStyle'
+import { Main } from '../components/Main/Main'
 
 const Home: NextPage = () => {
   return (
     <>  
-      <Header/>
+      <Header />
+      <Main />
       <GlobalStyle />
     </>
   )
