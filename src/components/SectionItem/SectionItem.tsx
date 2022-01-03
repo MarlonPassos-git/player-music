@@ -1,6 +1,6 @@
-import { Container, Img, TitleMusic } from "./styled";
+import { Container, FavoriteButton, Img, PlayButton, TitleMusic, WrapperControllers, WrapperImg } from "./styled";
 import { memo} from "react";
-
+import { FaPlay, FaHeart } from "react-icons/fa";
 
 interface CategorySectionProps { 
         data: DataProps
@@ -13,10 +13,12 @@ interface DataProps {
     name?: string,
     cover_big?: string,
     picture_big?: string,
-    md5_image?: string
+    md5_image?: string,
+    preview?: string
 }
 
 function SectionItemComponet({ data }: CategorySectionProps) { 
+    
     
 
     function getPicture(data: DataProps) { 
@@ -30,15 +32,35 @@ function SectionItemComponet({ data }: CategorySectionProps) {
         return url
     }
 
+    const isMusic = (data?.preview !== undefined)
     
 
     return (
         <Container>
-            <Img
-                src={getPicture(data)}
-                draggable={false}
-            />
-            <TitleMusic> 
+            <WrapperImg>
+                <Img
+                    src={getPicture(data)}
+                    draggable={false}
+                    onClick={() => { 
+                        console.log(isMusic)
+                    }}
+                />
+                <WrapperControllers>
+                    <PlayButton>
+                        <FaPlay />
+                    </PlayButton>
+                    <FavoriteButton
+                        className="FavoriteButton"
+                    >
+                        <FaHeart />
+                    </FavoriteButton>
+                </WrapperControllers>
+            </WrapperImg>
+            
+            <TitleMusic
+                href={data.link}
+                target="_blank"
+            > 
                 {data?.title || data?.name}
             </TitleMusic>
             
