@@ -9,6 +9,11 @@ export const Container = styled.header`
     height: ${Rem(92)};
     padding: 0 var(--spacing-padding);
     border-bottom: 1px solid var(--black);
+    position: fixed;
+    background-color: var(--white);
+    width: 100%;
+    top: 0;
+    z-index: 100;
 
 
 `
