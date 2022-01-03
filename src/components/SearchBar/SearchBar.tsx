@@ -24,12 +24,15 @@ export default function SearchBar() {
 
     function handleSearchButton(event:any) { 
 
+        event.preventDefault()
+
         if (!isOpen || value === '') { 
             setIsOpen(true)
+            setSearchResult({})
             return
         }
 
-        event.preventDefault()
+        
 
         api.get(`searchImput/${value}`).then(response => {
         
