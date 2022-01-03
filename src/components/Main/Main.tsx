@@ -1,7 +1,7 @@
 import { memo, ReactNode, useEffect, useState } from "react"
 import api from "../../services/user"
 import { CategorySection } from "../CategorySection/CategorySection"
-import { Container } from "./styled"
+import { Container, Title } from "./styled"
 import { useSearchResult } from "../../context/SearchResult"
 import { SearchResult } from "../SearchResult/SearchResult"
 import NotFound from "../NotFound/NotFound"
@@ -14,16 +14,18 @@ interface popularSoundsProps {
 export function Main() {
 
     const [popularSounds, setPopularSounds] = useState<Array<popularSoundsProps>>([])
-
     //@ts-ignore
-    const {searchResult, setSearchResult} = useSearchResult()
+    const { searchResult, setSearchResult } = useSearchResult()
+    const [country , setCountry] = useState('')
     
     useEffect(() => {   
         api.get('popularSounds').then(response => {
             
-            
             setPopularSounds(response.data)
-            
+        })
+
+        api.get('infos').then(response => {
+            setCountry(response.data.country)
         })
     }, [])
 
@@ -35,10 +37,15 @@ export function Main() {
     }
     else if (searchResult.hasOwnProperty('data')) {
         
-        whatShow = <SearchResult searchResult={ searchResult }/>
+        whatShow = (<>
+            <Title> Resultado da Pesquisa</Title>
+            < SearchResult searchResult = { searchResult } />
+        </>) 
     }
     else { 
-        whatShow = popularSounds.map((category, index) => { 
+        whatShow = <>
+            <Title> Oque mais esta sendo ouvido no { country }</Title>
+            {popularSounds.map((category, index) => { 
                     return (
                         <CategorySection
                             key={index}
@@ -46,7 +53,8 @@ export function Main() {
                             data={category.data}
                         />
                     )
-                })
+                })}
+            </>
     }
 
     console.log(searchResult)
