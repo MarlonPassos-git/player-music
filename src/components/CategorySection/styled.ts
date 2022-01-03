@@ -8,12 +8,12 @@ export const Title = styled.h2`
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 19px;
-    
+    text-transform: capitalize;
 
 `
 
 export const Carousel = styled(_Carousel)`
     user-select: none !important;
-
+    margin-bottom: 20px;
    
 `
