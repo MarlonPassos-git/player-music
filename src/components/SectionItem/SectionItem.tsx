@@ -30,7 +30,7 @@ function SectionItemComponet({ data }: CategorySectionProps) {
         return url
     }
 
-    console.log(data)
+    
 
     return (
         <Container>
