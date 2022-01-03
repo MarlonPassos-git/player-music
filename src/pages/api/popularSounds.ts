@@ -15,7 +15,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     for (let category of Object.keys(data)) {
 
       const categorySounds = {
-        category: category,
+        category: translateCategories(category),
         data: data[category].data
       }
 
@@ -25,4 +25,21 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.statusCode = 200
     res.json(popularSounds)
   })
+}
+
+
+function translateCategories(name: string) { 
+  switch (name) { 
+    case 'tracks':
+      return 'musicas'
+      break    
+    case 'artists':
+      return 'artistas'
+      break
+    case 'albums':
+      return 'álbums' 
+      break
+    default:
+      return name
+  }
 }
