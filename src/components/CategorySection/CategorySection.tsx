@@ -21,12 +21,20 @@ export function CategorySection({ category, data }: CategorySectionProps) {
     const [totalItems, setTotalItems] = useState(4)
 
     function totalItemsCreen() { 
-        const itemWidth = progressiveClampProcessed(86, 190)
-        const widthSection = section.current.slider.parentElement.clientWidth
-        const totalItems = Math.floor(widthSection / itemWidth) -1 
+        const itemWidth = progressiveClampProcessed(140, 190)
+        const widthSection = section?.current?.slider?.parentElement?.clientWidth
+        const totalItems = Math.floor(widthSection / itemWidth)  - 1
 
+        if (widthSection < 510) return 2
+        else  if (widthSection < 650) return 3
         return totalItems 
     }
+
+    const breakPoints = [
+        
+        { width: 400, itemsToShow: 2,},
+        
+      ]
 
     useEffect(() => { 
 
@@ -40,18 +48,20 @@ export function CategorySection({ category, data }: CategorySectionProps) {
 
     return (
 
-        
+
         <section>
             <Title>{category}</Title>
             <Carousel
-                ref={section }
+                ref={section}
                 itemsToShow={totalItems}
                 itemsToScroll={1}
                 isRTL={false}
                 showArrows={false}
                 pagination={false}
                 
-                
+                initialFirstItem={1}
+                itemPadding={[0, 5, 0, 5]}
+                /* breakPoints={breakPoints} */
                 
 
             >
