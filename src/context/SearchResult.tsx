@@ -16,10 +16,19 @@ interface a {
 export const SearchResultProvider = ({ children }: SearchResultProps) => {
 
     const [searchResult, setSearchResult] = useState<Object>({})
+    const [currentMusic, setCurrentMusic] = useState<Object>({})
+    const [favoriteMusics, setFavoriteMusics] = useState<Array<Object>>([])
 
     return (
         <SearchResultContext.Provider
-            value={{ searchResult, setSearchResult }}
+            value={{
+                searchResult,
+                setSearchResult,
+                currentMusic,
+                setCurrentMusic,
+                favoriteMusics,
+                setFavoriteMusics
+            }}
         >
             {children}
         </SearchResultContext.Provider>
