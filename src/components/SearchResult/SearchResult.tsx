@@ -14,7 +14,12 @@ interface SearchResultProps {
                 name?: string,
                 cover_big?: string,
                 picture_big?: string,
-                md5_image?: string
+                md5_image?: string,
+                preview?: string,
+                artist?: {
+                    name: string,
+                    link: string,
+                }
             }
         ],
         next: string
@@ -26,7 +31,7 @@ interface SearchResultProps {
 
 export function SearchResult({ searchResult }: SearchResultProps) { 
 
-    
+
 
     const [data, setData] = useState(searchResult.data)
     const [nextResults, setNextResults] = useState(cleanNextResults(searchResult.next))
@@ -44,15 +49,17 @@ export function SearchResult({ searchResult }: SearchResultProps) {
         return cleanUrl
     }
 
-    function HandleNextResults() { 
+    function HandleNextResults(event: React.MouseEvent<HTMLElement>) { 
 
-        
+        // @ts-ignore
+        const position = event.target.getBoundingClientRect().y
+        console.log(position)
 
         api.get(`searchImput/${nextResults}`).then(response => {
         
             const dataApi = response.data.data
             const nextResults = response?.data?.next
-
+            console.log(event.target)
             console.log(dataApi)
             
 
@@ -78,7 +85,7 @@ export function SearchResult({ searchResult }: SearchResultProps) {
             
             <WrapperButton>
                 <Button
-                    onClick={HandleNextResults}
+                    onClick={(e)=>HandleNextResults(e)}
                 >
                     Ver mais itens
                 </Button>
