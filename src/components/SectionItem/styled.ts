@@ -6,7 +6,8 @@ export const Container = styled.div`
     max-width: ${progressiveClamp(140, 190)};
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
+    
 
 `
 
@@ -91,11 +92,31 @@ export const TitleMusic = styled.a`
     text-align: center;
     font-size: 18px;
     line-height: 27px;
-    /* identical to box height */
+    font-weight: 500;
     text-align: center;
-    max-height: 27px;
-    overflow-x: hidden;
+    /* max-height: 27px; */
+    /* overflow: hidden; */
     cursor: pointer;
+`
+
+export const ArtistName = styled(TitleMusic)`
+    font-weight: 300;
+    font-size: 16px;
+    max-height: none;
+`
+
+export const Duration = styled.span`
+    font-size: 18px;
+    background-color: var(--white);
+    height: 26px;
+    width: 40px;
+    z-index: 4;
+    color: var(--black);
+    text-align: center;
+    margin: 15px 16px 0 0;
+    justify-self: end;
+    border-radius: 4px;
+    font-weight: 500
 
 
 `
