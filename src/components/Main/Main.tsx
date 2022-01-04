@@ -57,7 +57,7 @@ export function Main() {
             </>
     }
 
-    console.log(searchResult)
+    
 
     return (
         <Container>
