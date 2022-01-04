@@ -13,34 +13,26 @@ interface SearchResultProps {
 
 
 export default function SearchBar() {
-
-    const [isOpen, setIsOpen] = useState(false)
-    const [value, setValue] = useState('')
-
+    
     //@ts-ignore
     const {searchResult, setSearchResult} = useSearchResult()
-
-    
+    const [isOpen, setIsOpen] = useState(false)
+    const [value, setValue] = useState('')
 
     function handleSearchButton(event:any) { 
 
         event.preventDefault()
+        
 
         if (!isOpen || value === '') { 
             setIsOpen(true)
             setSearchResult({})
             return
         }
-
-        
-
         api.get(`searchImput/${value}`).then(response => {
-        
-            
+            window.scrollTo({ top: 0, behavior: 'smooth' })
             setSearchResult(response.data)
-        })
-
-        
+        })  
     }
 
     function handleSearchInput(event: ChangeEvent<HTMLInputElement>) { 
