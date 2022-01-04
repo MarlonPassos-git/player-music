@@ -1,34 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+<h1 align="center" class="line-1 anim-typewriter">Equalizer landing page</h1>
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<img align="center"  class="img__project " src="./screen.gif">
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<div align="center"  class="links">
+    <a href="#the_challenge">The challenge</a> |
+     <a href="#links">Links</a> |
+      <a href="#built_with">Built with</a> |
+       <a href="#what_i_learned">What I learned</a> |
+       <a href="#resources">Resources</a> |
+       <a href="#author">Author</a> 
+</div>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<h2 id="the_challenge"> 🌋 The challenge</h2>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Your challenge is to build out this landing page and get it looking as close to the design as possible.<br>
+Your users should be able to:
 
-## Learn More
+- View the optimal layout depending on their device's screen size
+- See hover states for interactive elements
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<h2 id="links">🔗 Links</h2>
 
-## Deploy on Vercel
+- Solution URL: []()
+- Live Site URL: [https://equalizer-landing-page.vercel.app/](https://equalizer-landing-page.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2 id="built_with">👷‍♂️ Ferramentas usadas</h2>
+
+
+-  <img src="https://img.icons8.com/color/20/000000/typescript.png"/> TypeScrpt
+-  <img class="icon" height="20" src="https://avatars-04.gitter.im/group/iv/4/5800767ed73408ce4f2e2711"/> Styled-Components
+-  <img src="https://img.icons8.com/plasticine/20/000000/react.png"/> React JS
+- <img src="https://seeklogo.com/images/N/next-js-logo-8FCFF51DD2-seeklogo.com.png" height="20"/> Next JS
+- <img src="https://easypm.ie/wp-content/uploads/2020/12/axios-icon.png" height="20"> Axios
+
+
+
+<h2 id="what_i_learned">👨‍🎓 What I learned</h2>
+
+
+-  I learned how to handle the basics of how to configure a react environment with babel and webpack
+
+- I created a SASS function to help me put values into elements in a flexible way. Now I've modified it so that the biggest size is when the screen is small and the smallest value is when the screen is big.
+  ``` scss
+    @function flexReverse( $minSize, $maxSize, $mobileWidth: 375, $decktopWidth: 1440) {
+
+    $maxSizePx: $maxSize * 1px;
+    $sizeDifference: $minSize - $maxSize;
+    $screenSizeDifference: $decktopWidth - $mobileWidth;
+    $minSizePx: $minSize * 1px;
+    $decktopWidthPx: $decktopWidth * 1px;
+
+    @return clamp(#{$minSizePx}, calc(#{$minSizePx} + -1 * (#{$sizeDifference} * ((#{$decktopWidthPx} - 100vw) / #{$screenSizeDifference}))), #{$maxSizePx}) 
+    }   
+  ```
+  - I know that for this type of challenge react it is not even recommended, but having used it gave me a lot of experience in how to use the tool and it will help me in future projects
+
+
+<h2 id="resources">📚 Resources</h2>
+
+
+- Place where I got the icons, [icon8](https://icons8.com.br/ )
+- Documentation [react JS](https://reactjs.org/docs/getting-started.html) 
+
+
+<h2 id="author">😬 Author</h2>
+
+
+- Frontend Mentor - [@MarlonPassos-git](https://www.frontendmentor.io/profile/MarlonPassos-git)
