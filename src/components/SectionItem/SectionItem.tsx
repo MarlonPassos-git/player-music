@@ -1,6 +1,8 @@
-import { Container, FavoriteButton, Img, PlayButton, TitleMusic, WrapperControllers, WrapperImg } from "./styled";
+import { ArtistName, Container, Duration, FavoriteButton, Img, PlayButton, TitleMusic, WrapperControllers, WrapperImg } from "./styled";
 import { memo} from "react";
 import { FaPlay, FaHeart } from "react-icons/fa";
+import { useFormatSeconds } from "../../hooks/useFormatSeconds";
+import { useSearchResult } from "../../context/SearchResult";
 
 interface CategorySectionProps { 
         data: DataProps
@@ -14,15 +16,26 @@ interface DataProps {
     cover_big?: string,
     picture_big?: string,
     md5_image?: string,
-    preview?: string
+    preview?: string,
+    duration?: string,
+    artist?: {
+        name: string,
+        link: string,
+    }
 }
 
-function SectionItemComponet({ data }: CategorySectionProps) { 
+function SectionItemComponet({ data }: CategorySectionProps) {
+    
+    //@ts-ignore
+    const { currentMusic, setCurrentMusic, favoriteMusics, setFavoriteMusics } = useSearchResult()
+    //@ts-ignore
+    const time = useFormatSeconds(+data.duration)
+    const isMusic = (data?.preview !== undefined)
     
     
 
     function getPicture(data: DataProps) { 
-        /* console.log() */
+        
         let url = data?.cover_big || data?.picture_big
 
         if (!(data?.cover_big || data?.picture_big)) { 
@@ -31,30 +44,50 @@ function SectionItemComponet({ data }: CategorySectionProps) {
 
         return url
     }
+    
+    function handlerPlayButton() { 
+        setCurrentMusic(data)
+    }
 
-    const isMusic = (data?.preview !== undefined)
+    function handlerFavoriteButton() { 
+        setFavoriteMusics([...favoriteMusics, data])
+    }
+
     
 
+    
     return (
-        <Container>
+        <Container
+            onClick={() => { 
+                        
+                    }}
+        >
             <WrapperImg>
                 <Img
                     src={getPicture(data)}
                     draggable={false}
-                    onClick={() => { 
-                        console.log(isMusic)
-                    }}
-                />
-                <WrapperControllers>
-                    <PlayButton>
-                        <FaPlay />
-                    </PlayButton>
-                    <FavoriteButton
-                        className="FavoriteButton"
-                    >
-                        <FaHeart />
-                    </FavoriteButton>
-                </WrapperControllers>
+                    
+                />{isMusic && (
+                    <>
+                        <WrapperControllers>
+                            <PlayButton
+                                onClick={handlerPlayButton}
+                            >
+                                <FaPlay />
+                            </PlayButton>
+                            <FavoriteButton
+                                className="FavoriteButton"
+                                onClick={handlerFavoriteButton}
+                            >
+                                <FaHeart />
+                            </FavoriteButton>
+                        </WrapperControllers>
+                        <Duration>
+                            { time }
+                        </Duration>
+                    </>
+                )}
+                
             </WrapperImg>
             
             <TitleMusic
@@ -63,6 +96,14 @@ function SectionItemComponet({ data }: CategorySectionProps) {
             > 
                 {data?.title || data?.name}
             </TitleMusic>
+            {isMusic && (
+                <ArtistName
+                    href={data?.artist?.link}
+                    target="_blank"
+                >
+                    {data?.artist?.name }
+                </ArtistName>
+            )}
             
         </Container>
     )
