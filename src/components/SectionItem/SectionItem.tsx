@@ -13,8 +13,8 @@ interface DataProps {
     link: string
     title?: string,
     name?: string,
-    cover_big?: string,
-    picture_big?: string,
+    cover_medium?: string,
+    picture_medium?: string,
     md5_image?: string,
     preview?: string,
     duration?: string,
@@ -36,9 +36,9 @@ function SectionItemComponet({ data }: CategorySectionProps) {
 
     function getPicture(data: DataProps) { 
         
-        let url = data?.cover_big || data?.picture_big
+        let url = data?.cover_medium || data?.picture_medium
 
-        if (!(data?.cover_big || data?.picture_big)) { 
+        if (!(data?.cover_medium || data?.picture_medium)) { 
             url = `https://e-cdns-images.dzcdn.net/images/cover/${ data.md5_image }/250x250-000000-80-0-0.jpg`
         }
 
