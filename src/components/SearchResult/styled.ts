@@ -17,6 +17,15 @@ export const WrapperButton = styled.div`
 `
 
 export const Button = styled.button`
-
+    width: 300px;
+    height: 50px;
+    background-color: var(--strong_cyan);
+    border-radius: 25px;
+    border: none;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
 
 `
