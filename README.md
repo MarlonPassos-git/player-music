@@ -69,14 +69,14 @@ Os itens da lista devem apresentar:
   - [x] barra de pesquisa 
   - [x] Botão de musicas favoritas
   
-- [ ] Criar menu 
+- [x] Criar menu 
   - [x] Sessão que mostra os sons mais tocados por região
   - [x] Sessão que mostra resultados da pesquisar
   - [x] Sessão que mostra as musicas favoritas  
   - [x] Elemento de musica individual 
   - [x] Titulo H1 com oque esta na tela 
 
-- [ ] Criar footer 
+- [x] Criar footer 
   - [x] mostras (capa, nome do artista e nome da musica)
   - [x] controle da musica ( play, pause, duração total e atual, barra de progresso musica)
   - [x] Controle de volume (barrinha e botoes de aumentar e diminuir)
@@ -141,6 +141,7 @@ Os itens da lista devem apresentar:
   
 
 <h2 id="resources">🚧 Pobremas A corrigir</h2>
+
 - [ ] Quando clica no botão de ver mais itens, a pagina automaticamente scrolla para o final da pagina.
 - [ ] Verificar quando uma musica não tem preview e mostrar uma capa de tipo sem preview ou um aviso para o usuario
 
