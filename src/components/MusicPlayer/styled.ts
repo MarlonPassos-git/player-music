@@ -30,19 +30,21 @@ export const Picture = styled.img`
     margin-right: ${Rem(15)};
 
 `
-export const MusicName = styled.p`
+export const MusicName = styled.a`
     grid-area: musicName;
     align-self: end;
     font-size: 18px;
     line-height: 27px;
     font-weight: 500;
+    cursor: pointer;
 `
 
-export const ArtistName = styled.p`
+export const ArtistName = styled.a`
     grid-area: artistName;
     font-weight: 300;
     font-size: 16px;
     align-self: start;
+    cursor: pointer;
 
 `
 

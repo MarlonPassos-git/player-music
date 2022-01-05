@@ -72,7 +72,7 @@ export function MusicPlayer() {
     
 
     if (currentMusic.id === undefined) {
-        return <Container>nada</Container>
+        return <Container></Container>
     }
 
     return (
@@ -80,8 +80,18 @@ export function MusicPlayer() {
             
             <WrapperMusicInfos>
                 <Picture src={pictureURL} />
-                <MusicName>{currentMusic.title}</MusicName>
-                <ArtistName>{currentMusic?.artist?.name}</ArtistName>
+                <MusicName
+                    href={currentMusic.link}
+                    target="_blank"
+                >
+                    {currentMusic.title}
+                </MusicName>
+                <ArtistName
+                    href={currentMusic.artist.link}
+                    target="_blank"
+                >
+                    {currentMusic?.artist?.name}
+                </ArtistName>
             </WrapperMusicInfos>
             <Controls>
                 <audio
