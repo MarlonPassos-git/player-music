@@ -140,6 +140,10 @@ Os itens da lista devem apresentar:
 - [ ] PWA
   
 
+<h2 id="resources">🚧 Pobremas A corrigir</h2>
+- [ ] Quando clica no botão de ver mais itens, a pagina automaticamente scrolla para o final da pagina.
+- [ ] Verificar quando uma musica não tem preview e mostrar uma capa de tipo sem preview ou um aviso para o usuario
+
 <h2 id="resources">📚 Recursos</h2>
 
 
