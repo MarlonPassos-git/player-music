@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ArtistName, Container, Controls, CurrentTime, DurationTime, MusicName, Picture, PlayPauseButton, ProgressBar, Volume, WrapperMusicInfos } from './styled'
+import { ArtistName, Button, Container, Controls, CurrentTime, DurationTime, MusicName, Picture, PlayPauseButton, ProgressBar, Volume, VolumeBar, WrapperMusicInfos } from './styled'
 import SearchBar from '../SearchBar/SearchBar'
 import { useSearchResult } from '../../context/SearchResult'
-import { FaPlay, FaPause } from "react-icons/fa"
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeDown } from "react-icons/fa"
 import { useFormatSeconds } from '../../hooks/useFormatSeconds'
 
 
@@ -16,6 +16,7 @@ export function MusicPlayer() {
     const audio = useRef<HTMLAudioElement>(null)
     const [paused, setPaused] = useState(false)
     const [time, setTime] = useState(0)
+    const [volume, setVolume] = useState(1)
     //@ts-ignore
     const duration = +audio?.current?.duration
     
@@ -45,6 +46,28 @@ export function MusicPlayer() {
         // @ts-ignore
         setTime(+audio?.current?.currentTime)
     }
+
+    function handlerVolumeDown() { 
+        // @ts-ignore
+        //audio.current?.volume = audio.current?.volume - 0.1
+        console.log(audio.current.volume)
+
+        // @ts-ignore
+        audio.current.volume = Math.max(audio.current.volume - 0.1, 0)
+        // @ts-ignore
+        setVolume(audio.current.volume)
+    }
+
+    function handlerVolumeUp() {
+        // @ts-ignore
+        console.log(audio.current.volume)
+
+        // @ts-ignore
+        audio.current.volume = Math.min(audio.current.volume + 0.1, 1)
+        // @ts-ignore
+        setVolume(audio.current.volume)
+    }
+
 
     
 
@@ -79,7 +102,23 @@ export function MusicPlayer() {
                 <DurationTime>{formatSeconds(duration)}</DurationTime>
                 
             </Controls>
-            <Volume></Volume>
+            <Volume>
+                <Button
+                    onClick={handlerVolumeDown}
+                >
+                    <FaVolumeDown
+                        color="var(--white)"
+                    />
+                </Button>
+                <VolumeBar value={volume} max={1} />
+                <Button>
+                    <FaVolumeUp
+                        onClick={handlerVolumeUp}
+                        
+                        color="var(--white)"
+                    />
+                </Button>
+            </Volume>
             
         </Container>
     )

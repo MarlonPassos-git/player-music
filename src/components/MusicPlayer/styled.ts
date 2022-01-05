@@ -83,10 +83,7 @@ export const PlayPauseButton = styled.button`
     grid-area: playPause;
 `
 
-export const Volume = styled.div`
-    width: 1%;
-    background-color: red;
-`
+
 
 export const ProgressBar = styled.progress`
     width: 100%;
@@ -111,4 +108,24 @@ export const CurrentTime = styled.span`
 export const DurationTime = styled(CurrentTime)`
     grid-area: durationTime;
     justify-self: start;    
+`
+
+export const Volume = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @media (max-width: 550px) {
+        justify-content: center;
+    }
+    
+`
+
+export const Button = styled(PlayPauseButton)`
+
+`
+
+export const VolumeBar = styled(ProgressBar)`
+    width: 100px;
+
 `
