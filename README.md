@@ -100,11 +100,11 @@ Os itens da lista devem apresentar:
 - [x] Controlar totalmente a musica
   - [x] tocar
   - [x] Pausar 
-  - [ ] controle de  volume  
+  - [x] controle de  volume  
   - [ ] Reproduzir todas as musicas favoritas
-- [ ] Poder adicionar/remover uma musica dos favoritos
-- [ ] Mostrar o coração colorido quando um musica ja estiver no favoritos 
-- [ ] Mostrar todas as musicas favoritas em um Sessão
+- [x] Poder adicionar/remover uma musica dos favoritos
+- [x] Mostrar o coração colorido quando um musica ja estiver no favoritos 
+- [x] Mostrar todas as musicas favoritas em um Sessão
 - [ ] Salvar a ultima musica tocada no localStorage
 
 ### Otimização / Refatoração
