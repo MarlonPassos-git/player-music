@@ -18,6 +18,7 @@ export const SearchResultProvider = ({ children }: SearchResultProps) => {
     const [searchResult, setSearchResult] = useState<Object>({})
     const [currentMusic, setCurrentMusic] = useState<Object>({})
     const [favoriteMusics, setFavoriteMusics] = useState<Array<Object>>([])
+    const [isFavoritePage, setIsFavoritePage] = useState<Boolean>(false)
 
     return (
         <SearchResultContext.Provider
@@ -27,7 +28,9 @@ export const SearchResultProvider = ({ children }: SearchResultProps) => {
                 currentMusic,
                 setCurrentMusic,
                 favoriteMusics,
-                setFavoriteMusics
+                setFavoriteMusics,
+                isFavoritePage,
+                setIsFavoritePage
             }}
         >
             {children}
