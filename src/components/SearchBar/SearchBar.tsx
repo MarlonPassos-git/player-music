@@ -49,11 +49,12 @@ export default function SearchBar() {
         if (value === '') {
             setIsFavoritePage(false)
             setIsOpen(false)
+        setSearchResult({})
+
             return
         }
         setValue('')
         
-        setSearchResult({})
     }
 
     return (
