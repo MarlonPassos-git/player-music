@@ -1,5 +1,5 @@
 import { ArtistName, Container, Duration, FavoriteButton, Img, PlayButton, TitleMusic, WrapperControllers, WrapperImg } from "./styled";
-import { memo} from "react";
+import { memo, useEffect, useState} from "react";
 import { FaPlay, FaHeart } from "react-icons/fa";
 import { useFormatSeconds } from "../../hooks/useFormatSeconds";
 import { useSearchResult } from "../../context/SearchResult";
@@ -31,8 +31,7 @@ function SectionItemComponet({ data }: CategorySectionProps) {
     //@ts-ignore
     const time = useFormatSeconds(+data.duration)
     const isMusic = (data?.preview !== undefined)
-    
-    
+    const [isFavorite, setIsFavorite] = useState(false)
 
     function getPicture(data: DataProps) { 
         
@@ -49,18 +48,36 @@ function SectionItemComponet({ data }: CategorySectionProps) {
         setCurrentMusic(data)
     }
 
-    function handlerFavoriteButton() { 
+    function handlerFavoriteButton() {
+
+        if (favoriteMusics.includes(data)) {
+
+            // @ts-ignore
+            setFavoriteMusics(favoriteMusics.filter(music => music.id !== data.id))
+            setIsFavorite(false)
+            return
+        }
+        
         setFavoriteMusics([...favoriteMusics, data])
+        setIsFavorite(true)
     }
 
-    
+    function handlerContainerMouseOver() { 
 
-    
+        // @ts-ignore
+        const has = favoriteMusics.find((music) => music.id === data.id)
+        
+        if (typeof has === 'object') {
+            setIsFavorite(true)
+            return
+        }
+        
+        setIsFavorite(false)
+    } 
+
     return (
         <Container
-            onClick={() => { 
-                        
-                    }}
+            onMouseOver={handlerContainerMouseOver}
         >
             <WrapperImg>
                 <Img
@@ -79,7 +96,9 @@ function SectionItemComponet({ data }: CategorySectionProps) {
                                 className="FavoriteButton"
                                 onClick={handlerFavoriteButton}
                             >
-                                <FaHeart />
+                                <FaHeart
+                                    color={ isFavorite ?  'var(--strong_cyan)' : 'var(--black)' }
+                                />
                             </FavoriteButton>
                         </WrapperControllers>
                         <Duration>
