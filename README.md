@@ -72,14 +72,14 @@ Os itens da lista devem apresentar:
 - [ ] Criar menu 
   - [x] Sessão que mostra os sons mais tocados por região
   - [x] Sessão que mostra resultados da pesquisar
-  - [ ] Sessão que mostra as musicas favoritas  
+  - [x] Sessão que mostra as musicas favoritas  
   - [x] Elemento de musica individual 
   - [x] Titulo H1 com oque esta na tela 
 
 - [ ] Criar footer 
   - [x] mostras (capa, nome do artista e nome da musica)
   - [x] controle da musica ( play, pause, duração total e atual, barra de progresso musica)
-  - [ ] Controle de volume (barrinha e botoes de aumentar e diminuir)
+  - [x] Controle de volume (barrinha e botoes de aumentar e diminuir)
 
 - [x] Pagina de nenhum resultado encontrado
 
@@ -131,9 +131,9 @@ Os itens da lista devem apresentar:
 - [x] Hospedar na vercel 
 - [ ] Pedir um feedback de um amigo programador
 - [ ] Personalizar o Readme
-  - [ ] Gravar um gif da pagina em funcionamento
+  - [x] Gravar um gif da pagina em funcionamento
   - [ ] 
-- [ ] Enviar o email ate 23:59 do dia 04/01/2022
+- [x] Enviar o email ate 23:59 do dia 04/01/2022
 
 ### Extra (se der tempo)
 - [ ] Adicionar animações do GSAP
