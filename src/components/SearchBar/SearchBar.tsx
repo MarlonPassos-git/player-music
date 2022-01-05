@@ -15,7 +15,7 @@ interface SearchResultProps {
 export default function SearchBar() {
     
     //@ts-ignore
-    const {searchResult, setSearchResult} = useSearchResult()
+    const {searchResult, setSearchResult, isFavoritePage, setIsFavoritePage} = useSearchResult()
     const [isOpen, setIsOpen] = useState(false)
     const [value, setValue] = useState('')
 
@@ -33,6 +33,8 @@ export default function SearchBar() {
             window.scrollTo({ top: 0, behavior: 'smooth' })
             setSearchResult(response.data)
         })  
+
+        setIsFavoritePage(false)
     }
 
     function handleSearchInput(event: ChangeEvent<HTMLInputElement>) { 
@@ -42,12 +44,15 @@ export default function SearchBar() {
     }
 
     function handleSearchClose() { 
+       
 
         if (value === '') {
+            setIsFavoritePage(false)
             setIsOpen(false)
             return
         }
         setValue('')
+        
         setSearchResult({})
     }
 
